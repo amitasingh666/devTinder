@@ -1,11 +1,31 @@
 const express = require("express");
+const connectDB = require("./config/database");
+const cookieParser = require("cookie-parser");
 
 const app = express();
 
-app.use((req, res) => {
-    res.send("Hello from server");
-}); //request handling function
+// Middlewares
+app.use(express.json());
+app.use(cookieParser()); 
 
-app.listen(3000, () => {
-    console.log("server started sucessfully");
-});
+// Routers
+const authRouter = require("./routes/auth");
+const profileRouter = require("./routes/profile");
+const requestRouter = require("./routes/requests");
+
+app.use("/", authRouter);
+app.use("/", profileRouter);
+app.use("/", requestRouter);
+
+
+
+connectDB()
+  .then(() => {
+    console.log("DB connected successfully");
+    app.listen(3000, () => {
+      console.log("server started sucessfully");
+    });
+  })
+  .catch((err) => {
+    console.error("DB cannot be connected");
+  });
