@@ -65,19 +65,19 @@ requestRouter.post("/request/review/:status/:requestId", userAuth, async(req, re
             return res.status(400).json({message: "Status not allowed"});
         }
 
-        // console.log(requestId);
-        // console.log(loggedInUser._id);
+        console.log(requestId);
+        console.log((loggedInUser._id).toString());
         // console.log(status) ;
 
         const connectionRequest = await ConnectionRequest.findOne({
             fromUserId: requestId,
-            toUserId: loggedInUser._id,
+            toUserId: (loggedInUser._id).toString(),
             status: "interested",
         });
 
         // console.log(status) ;
 
-        // console.log(connectionRequest);
+        console.log(connectionRequest);
 
         if(!connectionRequest) {
             return res.status(400).json({message: "Connection request not found"});
