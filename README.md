@@ -10,6 +10,15 @@ connect, and build professional relationships.
 
 ---
 
+## 🔗 Repositories
+
+- **Frontend (React + Redux):**  
+  https://github.com/amitasingh666/devTinderFrontend.git
+
+- **Backend (Node.js + Express + MongoDB):**  
+  https://github.com/amitasingh666/devTinder.git
+
+
 ## ✨ Features
 
 ### 🔐 Authentication
